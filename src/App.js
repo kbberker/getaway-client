@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import LoginPage from "./components/LoginPage";
+
 class App extends Component {
   state = {
     username: ""
@@ -15,11 +17,15 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App" />;
-        <Route path="/" />
-        <Route path="/login" />
-        <Route path="/trips" />
-        <Route path="/newtrip" />
+        <div className="main-layout">
+          <Route path="/" />
+          <Route
+            path="/login"
+            render={() => <LoginPage signin={this.signin} />}
+          />
+          <Route path="/trips" />
+          <Route path="/newtrip" />
+        </div>
       </Router>
     );
   }
