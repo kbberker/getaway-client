@@ -1,4 +1,16 @@
+body {
+  margin: 0;
+}
+
 .main-layout {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
 }
