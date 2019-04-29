@@ -2,26 +2,33 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import LoginPage from "./components/LoginPage";
+import CreateAccount from "./components/CreateAccount";
 
 class App extends Component {
   state = {
-    username: ""
+    userFirstName: ""
   };
 
-  signin = username => this.setState({ username });
+  signin = userFirstName => this.setState({ userFirstName });
 
   signout = () => {
-    this.setState({ username: "" });
+    this.setState({ userFirstName: "" });
   };
 
   render() {
+    const { signin } = this;
+
     return (
       <Router>
         <div className="main-layout">
           <Route path="/" />
           <Route
             path="/login"
-            render={() => <LoginPage signin={this.signin} />}
+            render={props => <LoginPage {...props} signin={signin} />}
+          />
+          <Route
+            path="/createaccount"
+            render={props => <CreateAccount {...props} signin={signin} />}
           />
           <Route path="/trips" />
           <Route path="/newtrip" />
